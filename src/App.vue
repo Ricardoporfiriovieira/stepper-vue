@@ -1,26 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<StepProgress :data="dataSteps" ref="stepProgress" ></StepProgress>
+
+<div>
+  <button @click="stepProgress.previousStep">Anterior</button>
+  <button @click="stepProgress.nextStep">Proximo</button>
+</div>
+
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script setup>
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+import { ref } from 'vue';
+
+import StepProgress from './components/StepProgress.vue'
+
+
+const stepProgress = ref();
+
+const dataSteps = {
+  steps: ['Step 1', 'Step 2', 'Step 3'],
+  currentStep: 1,
+  activeColor: '#65a30d',
+  passiveColor: '#84cc16'
+};
+
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
